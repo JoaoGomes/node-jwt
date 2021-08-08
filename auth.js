@@ -28,7 +28,7 @@ const users = [
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    const user = user.find(u => { return u.username === username && user.password === password});
+    const user = users.find(u => { return u.username === username && u.password === password});
 
     if(user) {
         const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret);
