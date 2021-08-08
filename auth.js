@@ -31,7 +31,7 @@ app.post('/login', (req, res) => {
     const user = users.find(u => { return u.username === username && u.password === password});
 
     if(user) {
-        const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret);
+        const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret, { expiresIn: '1m'});
         res.json({
             accessToken
         });
